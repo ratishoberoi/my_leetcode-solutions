@@ -17,3 +17,20 @@ class Solution:
                 right -= 1
                 
         return max_area
+    
+#BRUTE FORCE 
+
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+        n = len(height)
+        max_water = 0
+        
+        for i in range(n):
+            for j in range(i+1, n):
+                width = j - i
+                water = width * min(height[i], height[j])
+                if water > max_water:
+                    max_water = water
+        return max_water
+    
+    
