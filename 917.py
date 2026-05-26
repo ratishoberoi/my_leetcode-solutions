@@ -1,0 +1,25 @@
+class Solution:
+    def reverseOnlyLetters(self, s: str) -> str:
+        s = list(s)                 
+        left, right = 0, len(s) - 1
+        while left < right:
+            while left < right and not s[left].isalpha():
+                left += 1
+            while left < right and not s[right].isalpha():
+                right -= 1
+            if left < right:
+                s[left], s[right] = s[right], s[left]
+                left += 1
+                right -= 1
+        return ''.join(s)
+    
+class Solution:
+    def reverseOnlyLetters(self, s: str) -> str:
+        stack = [ch for ch in s if ch.isalpha()]
+        result = []
+        for ch in s:
+            if ch.isalpha():
+                result.append(stack.pop())
+            else:
+                result.append(ch)
+        return ''.join(result)    
